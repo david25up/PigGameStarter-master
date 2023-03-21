@@ -1,7 +1,5 @@
 package edu.up.cs301.pig;
 
-import edu.up.cs301.game.infoMsg.GameState;
-
 public class PigGameState extends GameState {
 
     private int whoseTurn;
@@ -11,5 +9,14 @@ public class PigGameState extends GameState {
     private int dieValue;
 
 
-    public int
+    /** Default constructor for the game state */
+    public PigGameState() {
+    }//default ctor
+
+    /**
+     * Copy constructor of the default game state
+     * @param original   The game state object we are copying over
+     */
+    public PigGameState(PigGameState original) {
+    }//ctor
 }
