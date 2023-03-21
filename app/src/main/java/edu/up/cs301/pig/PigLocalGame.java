@@ -19,21 +19,18 @@ public class PigLocalGame extends LocalGame {
 
     PigGameState gameInstance;
 
-    /**
-     * This ctor creates a new game state
-     */
+    /** This ctor creates a new game state */
     public PigLocalGame() {
         gameInstance = new PigGameState();
-    }
+    }//default ctor
 
     /**
      * can the player with the given id take an action right now?
      */
     @Override
     protected boolean canMove(int playerIdx) {
-        //TODO  You will implement this method
         return (playerIdx == gameInstance.getTurn());
-    }
+    }//canMove
 
     /**
      * This method is called when a new action arrives from a player
@@ -63,9 +60,9 @@ public class PigLocalGame extends LocalGame {
      */
     @Override
     protected String checkIfGameOver() {
-        if (gameInstance.getPlayer0Score() >= 50) {
+        if (gameInstance.getPlayer0Score() >= 50) {//Checks player0
             return "Player 0 has won the game";
-        } else if (gameInstance.getPlayer1Score() >= 50){
+        } else if (gameInstance.getPlayer1Score() >= 50){//Checks player1
             return "Player 1 has won the game";
         } return null;
     }//checkIfGameOver
