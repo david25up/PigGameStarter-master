@@ -11,6 +11,10 @@ public class PigGameState extends GameState {
 
     /** Default constructor for the game state */
     public PigGameState() {
+        whoseTurn = 0;
+        player0Score = 0;
+        player1Score = 0;
+        addedTotal = 0;
     }//default ctor
 
     /**
@@ -18,5 +22,10 @@ public class PigGameState extends GameState {
      * @param original   The game state object we are copying over
      */
     public PigGameState(PigGameState original) {
+        whoseTurn = original.whoseTurn;
+        player0Score = original.player0Score;
+        player1Score = original.player1Score;
+        addedTotal = original.addedTotal;
+        dieValue = original.dieValue;
     }//ctor
 }
