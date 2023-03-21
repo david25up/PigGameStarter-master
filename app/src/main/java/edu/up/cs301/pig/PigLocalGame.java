@@ -17,6 +17,8 @@ import android.util.Log;
  */
 public class PigLocalGame extends LocalGame {
 
+    PigGameState gameInstance = new PigGameState();
+
     /**
      * This ctor creates a new game state
      */
@@ -30,7 +32,7 @@ public class PigLocalGame extends LocalGame {
     @Override
     protected boolean canMove(int playerIdx) {
         //TODO  You will implement this method
-        return false;
+        return (playerIdx == gameInstance.getTurn());
     }
 
     /**
