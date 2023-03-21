@@ -4,6 +4,7 @@ import edu.up.cs301.game.infoMsg.GameState;
 
 public class PigGameState extends GameState {
 
+    // --- Instance Variables --- //
     private int whoseTurn;
     private int player0Score;
     private int player1Score;
@@ -16,7 +17,7 @@ public class PigGameState extends GameState {
         whoseTurn = 0;
         player0Score = 0;
         player1Score = 0;
-        addedTotal = 0;
+        currTotal = 0;
     }//default ctor
 
     /**
@@ -27,27 +28,25 @@ public class PigGameState extends GameState {
         whoseTurn = original.whoseTurn;
         player0Score = original.player0Score;
         player1Score = original.player1Score;
-        addedTotal = original.addedTotal;
+        currTotal = original.currTotal;
         dieValue = original.dieValue;
     }//ctor
 
-    public int getTurn() {return whoseTurn;}
+    ///////////////////////////
+    // --- GETTER METHODS ---//
+    ///////////////////////////
+    public int getTurn() {return whoseTurn;}//getTurn
+    public int getPlayer0Score() {return player0Score;}//getPlayer0Score
+    public int getPlayer1Score() {return player1Score;}//getPlayer1Score
+    public int getCurrTotal() {return currTotal;}//getCurrTotal
+    public int getDieValue() {return dieValue;}//getDieValue
 
-    public int getPlayer0Score() {return player0Score;}
-
-    public int getPlayer1Score() {return player1Score;}
-
-    public int getCurrTotal() {return currTotal;}
-
-    public int getDieValue() {return dieValue;}
-
-    public void setWhoseTurn(int turn) {whoseTurn = turn;}
-
-    public void setPlayer0Score(int score) {player0Score = score;}
-
-    public void setPlayer1Score(int score) {player1Score = score;}
-
-    public void setCurrTotal(int total) {currTotal = total;}
-
-    public void setDieValue(int value) {dieValue = value;}
+    ////////////////////////////
+    // --- SETTER METHODS --- //
+    ////////////////////////////
+    public void setWhoseTurn(int turn) {whoseTurn = turn;}//setWhoseTurn
+    public void setPlayer0Score(int score) {player0Score = score;}//setPlayer0Score
+    public void setPlayer1Score(int score) {player1Score = score;}//setPLayer1Score
+    public void setCurrTotal(int total) {currTotal = total;}//setCurrTotal
+    public void setDieValue(int value) {dieValue = value;}//setDieValue
 }
