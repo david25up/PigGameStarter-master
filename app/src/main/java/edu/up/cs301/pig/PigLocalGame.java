@@ -17,13 +17,13 @@ import android.util.Log;
  */
 public class PigLocalGame extends LocalGame {
 
-    PigGameState gameInstance = new PigGameState();
+    PigGameState gameInstance;
 
     /**
      * This ctor creates a new game state
      */
     public PigLocalGame() {
-        //TODO  You will implement this constructor
+        gameInstance = new PigGameState();
     }
 
     /**
