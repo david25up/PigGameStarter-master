@@ -69,7 +69,6 @@ public class PigLocalGame extends LocalGame {
                     gameInstance.flipTurn();
                 }
             }
-            gameInstance.setDieValue(0);
             return true;
         }
         return false;

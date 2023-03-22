@@ -136,7 +136,7 @@ public class PigHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
         //Roll button is clicked
         else if (button.getId() == R.id.dieButton) {
-            PigHoldAction action = new PigHoldAction(this);
+            PigRollAction action = new PigRollAction(this);
             game.sendAction(action);
 
             try {

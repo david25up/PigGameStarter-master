@@ -51,7 +51,7 @@ public class PigSmartComputerPlayer extends GameComputerPlayer {
         int diff = 50 - currScore;
         int oppDiff = 50 - oppScore;
 
-        if (pigGameState.getCurrTotal() >= diff || pigGameState.getCurrTotal() >= oppDiff || diff <= 10) {
+        if (pigGameState.getCurrTotal() >= diff || pigGameState.getCurrTotal() >= oppDiff || diff <= 10 || pigGameState.getCurrTotal() > 15) {
             PigHoldAction action = new PigHoldAction(this);
             game.sendAction(action);
         } else {
