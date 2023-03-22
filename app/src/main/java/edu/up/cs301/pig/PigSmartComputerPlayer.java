@@ -31,6 +31,11 @@ public class PigSmartComputerPlayer extends GameComputerPlayer {
     @Override
     protected void receiveInfo(GameInfo info) {
 
+        //Flashes the screen red when not a PigGameState object
+        if (!(info instanceof PigGameState)) {
+            //info is not a PigGameState object
+            return;
+        }
         PigGameState pigGameState = new PigGameState( (PigGameState) info);
 
         int currScore;
