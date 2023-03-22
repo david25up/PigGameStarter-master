@@ -40,6 +40,11 @@ public class PigMainActivity extends GameMainActivity {
             }});
         playerTypes.add(new GamePlayerType("Computer Player") {
             public GamePlayer createPlayer(String name) {
+                return new PigSmartComputerPlayer(name);
+            }});
+
+        playerTypes.add(new GamePlayerType("Original AI Player") {
+            public GamePlayer createPlayer(String name) {
                 return new PigComputerPlayer(name);
             }});
 
