@@ -1,5 +1,7 @@
 package edu.up.cs301.pig;
 
+import android.graphics.Color;
+
 import java.util.Random;
 
 import edu.up.cs301.game.GameComputerPlayer;
@@ -30,6 +32,12 @@ public class PigComputerPlayer extends GameComputerPlayer {
      */
     @Override
     protected void receiveInfo(GameInfo info) {
+
+        //Flashes the screen red when not a PigGameState object
+        if (!(info instanceof PigGameState)) {
+            //info is not a PigGameState object
+            return;
+        }
 
         PigGameState pigGameState = new PigGameState( (PigGameState) info);
 

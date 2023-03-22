@@ -1,5 +1,7 @@
 package edu.up.cs301.pig;
 
+import static java.lang.Thread.sleep;
+
 import edu.up.cs301.game.GameHumanPlayer;
 import edu.up.cs301.game.GameMainActivity;
 import edu.up.cs301.game.R;
@@ -77,9 +79,9 @@ public class PigHumanPlayer extends GameHumanPlayer implements OnClickListener {
         }
 
         //Appends the scores and current total to the corresponding views
-        playerScoreTextView.setText(score);
-        oppScoreTextView.setText(oppScore);
-        turnTotalTextView.setText(((PigGameState) info).getCurrTotal());
+        playerScoreTextView.setText(score + "");
+        oppScoreTextView.setText(oppScore + "");
+        turnTotalTextView.setText(((PigGameState) info).getCurrTotal() + "");
 
         //Changes the face of the die to the corresponding value
         switch(((PigGameState) info).getDieValue()) {
@@ -108,6 +110,8 @@ public class PigHumanPlayer extends GameHumanPlayer implements OnClickListener {
                 break;
             }
         }
+
+        ((PigGameState) info).flipTurn();;
      }//receiveInfo
 
     /**
@@ -123,8 +127,8 @@ public class PigHumanPlayer extends GameHumanPlayer implements OnClickListener {
             PigHoldAction action = new PigHoldAction(this);
             game.sendAction(action);
 
-            try { //Slight delay to take in action
-                wait(2000);
+            try {//Slight delay to show action
+                sleep(100);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
@@ -136,7 +140,7 @@ public class PigHumanPlayer extends GameHumanPlayer implements OnClickListener {
             game.sendAction(action);
 
             try {
-                wait(2000);
+                sleep(100);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
