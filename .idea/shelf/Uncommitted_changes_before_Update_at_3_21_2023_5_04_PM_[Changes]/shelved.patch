@@ -1,0 +1,18 @@
+Index: app/src/main/java/edu/up/cs301/pig/PigLocalGame.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package edu.up.cs301.pig;\r\n\r\nimport edu.up.cs301.game.GamePlayer;\r\nimport edu.up.cs301.game.LocalGame;\r\nimport edu.up.cs301.game.actionMsg.GameAction;\r\nimport edu.up.cs301.game.infoMsg.GameState;\r\n\r\nimport android.util.Log;\r\n\r\n// dummy comment, to see if commit and push work from srvegdahl account\r\n\r\n/**\r\n * class PigLocalGame controls the play of the game\r\n *\r\n * @author Andrew M. Nuxoll, modified by Steven R. Vegdahl\r\n * @version February 2016\r\n */\r\npublic class PigLocalGame extends LocalGame {\r\n\r\n    PigGameState gameInstance;\r\n\r\n    /** This ctor creates a new game state */\r\n    public PigLocalGame() {\r\n        gameInstance = new PigGameState();\r\n    }//default ctor\r\n\r\n    /**\r\n     * can the player with the given id take an action right now?\r\n     */\r\n    @Override\r\n    protected boolean canMove(int playerIdx) {\r\n        return (playerIdx == gameInstance.getTurn());\r\n    }//canMove\r\n\r\n    /**\r\n     * This method is called when a new action arrives from a player\r\n     *\r\n     * @return true if the action was taken or false if the action was invalid/illegal.\r\n     */\r\n    @Override\r\n    protected boolean makeMove(GameAction action) {\r\n        //TODO  You will implement this method\r\n        return false;\r\n    }//makeMove\r\n\r\n    /**\r\n     * send the updated state to a given player\r\n     */\r\n    @Override\r\n    protected void sendUpdatedStateTo(GamePlayer p) {\r\n        PigGameState temp = new PigGameState(gameInstance);\r\n        p.sendInfo(temp);\r\n\r\n    }//sendUpdatedSate\r\n\r\n    /**\r\n     * Check if the game is over\r\n     *\r\n     * @return\r\n     * \t\ta message that tells who has won the game, or null if the\r\n     * \t\tgame is not over\r\n     */\r\n    @Override\r\n    protected String checkIfGameOver() {\r\n        if (gameInstance.getPlayer0Score() >= 50) {//Checks player0\r\n            return \"Player 0 has won the game\";\r\n        } else if (gameInstance.getPlayer1Score() >= 50){//Checks player1\r\n            return \"Player 1 has won the game\";\r\n        } return null;\r\n    }//checkIfGameOver\r\n\r\n}// class PigLocalGame\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/edu/up/cs301/pig/PigLocalGame.java b/app/src/main/java/edu/up/cs301/pig/PigLocalGame.java
+--- a/app/src/main/java/edu/up/cs301/pig/PigLocalGame.java	(revision b8a6294fbbff7d058819200031891822dc39f823)
++++ b/app/src/main/java/edu/up/cs301/pig/PigLocalGame.java	(date 1679443094689)
+@@ -50,7 +50,6 @@
+     protected void sendUpdatedStateTo(GamePlayer p) {
+         PigGameState temp = new PigGameState(gameInstance);
+         p.sendInfo(temp);
+-
+     }//sendUpdatedSate
+ 
+     /**

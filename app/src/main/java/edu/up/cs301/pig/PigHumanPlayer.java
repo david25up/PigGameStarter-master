@@ -60,8 +60,56 @@ public class PigHumanPlayer extends GameHumanPlayer implements OnClickListener {
      */
     @Override
     public void receiveInfo(GameInfo info) {
-        //TODO You will implement this method to receive state objects from the game
-    }//receiveInfo
+        //Flashes the screen red when not a PigGameState object
+        if (!(info instanceof PigGameState)) {
+          //info is not a PigGameState object
+            flash(Color.RED, 100);
+            return;
+        }
+
+        //Pulls the human player's and the opponent's score
+        int score, oppScore;
+        if (playerNum == 0) {
+            score = ((PigGameState) info).getPlayer0Score();
+            oppScore = ((PigGameState) info).getPlayer1Score();
+        } else {
+            score = ((PigGameState) info).getPlayer1Score();
+            oppScore = ((PigGameState) info).getPlayer0Score();
+        }
+
+        //Appends the scores and current total to the corresponding views
+        playerScoreTextView.setText(score);
+        oppScoreTextView.setText(oppScore);
+        turnTotalTextView.setText(((PigGameState) info).getCurrTotal());
+
+        //Changes the face of the die to the corresponding value
+        switch(((PigGameState) info).getDieValue()) {
+            case 1: {
+                dieImageButton.setImageResource(R.drawable.face1);
+                break;
+            }
+            case 2: {
+                dieImageButton.setImageResource(R.drawable.face2);
+                break;
+            }
+            case 3: {
+                dieImageButton.setImageResource(R.drawable.face3);
+                break;
+            }
+            case 4: {
+                dieImageButton.setImageResource(R.drawable.face4);
+                break;
+            }
+            case 5: {
+                dieImageButton.setImageResource(R.drawable.face5);
+                break;
+            }
+            case 6: {
+                dieImageButton.setImageResource(R.drawable.face6);
+                break;
+            }
+        }
+     }//receiveInfo
 
     /**
      * this method gets called when the user clicks the die or hold button. It
