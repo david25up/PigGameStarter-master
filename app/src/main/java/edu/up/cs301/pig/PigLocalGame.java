@@ -7,6 +7,8 @@ import edu.up.cs301.game.infoMsg.GameState;
 
 import android.util.Log;
 
+import java.util.Random;
+
 // dummy comment, to see if commit and push work from srvegdahl account
 
 /**
@@ -31,7 +33,6 @@ public class PigLocalGame extends LocalGame {
      */
     @Override
     protected boolean canMove(int playerIdx) {
-        //TODO  You will implement this method
         return (playerIdx == gameInstance.getTurn());
     }
 
@@ -42,7 +43,37 @@ public class PigLocalGame extends LocalGame {
      */
     @Override
     protected boolean makeMove(GameAction action) {
-        //TODO  You will implement this method
+        int playerCount = players.length;
+        int playerTurn = gameInstance.getTurn();
+
+        if (action instanceof PigHoldAction) {
+            if (playerTurn == 0) {
+                gameInstance.setPlayer0Score(gameInstance.getPlayer0Score() + gameInstance.getCurrTotal());
+                gameInstance.setCurrTotal(0);
+            } else if (playerTurn == 1) {
+                gameInstance.setPlayer1Score(gameInstance.getPlayer1Score() + gameInstance.getCurrTotal());
+                gameInstance.setCurrTotal(0);
+            }
+            if (playerCount > 1) {
+                gameInstance.flipTurn();
+            }
+            return true;
+        } else if (action instanceof PigRollAction) {
+            Random rand = new Random();
+
+            gameInstance.setDieValue(rand.nextInt(6) + 1);
+            int dieVal = gameInstance.getDieValue();
+            if (dieVal != 1) {
+                gameInstance.setCurrTotal(gameInstance.getCurrTotal() + dieVal);
+            } else if (dieVal == 1) {
+                gameInstance.setCurrTotal(0);
+                if (playerCount > 1) {
+                    gameInstance.flipTurn();
+                }
+            }
+            gameInstance.setDieValue(0);
+            return true;
+        }
         return false;
     }//makeMove
 

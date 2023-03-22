@@ -45,6 +45,14 @@ public class PigGameState extends GameState {
     // --- SETTER METHODS --- //
     ////////////////////////////
     public void setWhoseTurn(int turn) {whoseTurn = turn;}//setWhoseTurn
+
+    public void flipTurn() {
+        if (whoseTurn == 0) {
+            whoseTurn = 1;
+        } else {
+            whoseTurn = 0;
+        }
+    }//setWhoseTurn
     public void setPlayer0Score(int score) {player0Score = score;}//setPlayer0Score
     public void setPlayer1Score(int score) {player1Score = score;}//setPLayer1Score
     public void setCurrTotal(int total) {currTotal = total;}//setCurrTotal
