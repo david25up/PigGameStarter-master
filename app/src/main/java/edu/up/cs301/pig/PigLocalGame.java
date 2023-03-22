@@ -82,7 +82,6 @@ public class PigLocalGame extends LocalGame {
     protected void sendUpdatedStateTo(GamePlayer p) {
         PigGameState temp = new PigGameState(gameInstance);
         p.sendInfo(temp);
-
     }//sendUpdatedSate
 
     /**

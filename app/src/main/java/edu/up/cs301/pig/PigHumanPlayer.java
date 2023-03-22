@@ -6,8 +6,6 @@ import edu.up.cs301.game.R;
 import edu.up.cs301.game.infoMsg.GameInfo;
 
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -61,9 +59,56 @@ public class PigHumanPlayer extends GameHumanPlayer implements OnClickListener {
      */
     @Override
     public void receiveInfo(GameInfo info) {
-        Log.d("Receiving info", "test");
-        //TODO You will implement this method to receive state objects from the game
-    }//receiveInfo
+        //Flashes the screen red when not a PigGameState object
+        if (!(info instanceof PigGameState)) {
+          //info is not a PigGameState object
+            flash(Color.RED, 100);
+            return;
+        }
+
+        //Pulls the human player's and the opponent's score
+        int score, oppScore;
+        if (playerNum == 0) {
+            score = ((PigGameState) info).getPlayer0Score();
+            oppScore = ((PigGameState) info).getPlayer1Score();
+        } else {
+            score = ((PigGameState) info).getPlayer1Score();
+            oppScore = ((PigGameState) info).getPlayer0Score();
+        }
+
+        //Appends the scores and current total to the corresponding views
+        playerScoreTextView.setText(score);
+        oppScoreTextView.setText(oppScore);
+        turnTotalTextView.setText(((PigGameState) info).getCurrTotal());
+
+        //Changes the face of the die to the corresponding value
+        switch(((PigGameState) info).getDieValue()) {
+            case 1: {
+                dieImageButton.setImageResource(R.drawable.face1);
+                break;
+            }
+            case 2: {
+                dieImageButton.setImageResource(R.drawable.face2);
+                break;
+            }
+            case 3: {
+                dieImageButton.setImageResource(R.drawable.face3);
+                break;
+            }
+            case 4: {
+                dieImageButton.setImageResource(R.drawable.face4);
+                break;
+            }
+            case 5: {
+                dieImageButton.setImageResource(R.drawable.face5);
+                break;
+            }
+            case 6: {
+                dieImageButton.setImageResource(R.drawable.face6);
+                break;
+            }
+        }
+     }//receiveInfo
 
     /**
      * this method gets called when the user clicks the die or hold button. It
@@ -73,7 +118,29 @@ public class PigHumanPlayer extends GameHumanPlayer implements OnClickListener {
      * 		the button that was clicked
      */
     public void onClick(View button) {
-        //TODO  You will implement this method to send appropriate action objects to the game
+        //Hold button is clicked
+        if (button.getId() == R.id.holdButton){
+            PigHoldAction action = new PigHoldAction(this);
+            game.sendAction(action);
+
+            try { //Slight delay to take in action
+                wait(2000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        //Roll button is clicked
+        else if (button.getId() == R.id.dieButton) {
+            PigHoldAction action = new PigHoldAction(this);
+            game.sendAction(action);
+
+            try {
+                wait(2000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }// onClick
 
     /**
