@@ -1,5 +1,7 @@
 package edu.up.cs301.pig;
 
+import java.util.Random;
+
 import edu.up.cs301.game.GameComputerPlayer;
 import edu.up.cs301.game.actionMsg.GameAction;
 import edu.up.cs301.game.infoMsg.GameInfo;
@@ -31,8 +33,16 @@ public class PigComputerPlayer extends GameComputerPlayer {
         // TODO  You will implement this method
         PigGameState pigGameState = new PigGameState( (PigGameState) info);
 
-        if (pigGameState.getTurn() == 1 ) {
+        if (pigGameState.canMove(1)) {
             return;
+        } else {
+            Random rand = new Random();
+
+            int makeMove = rand.nextInt(2);
+
+            if (makeMove == 0) {
+                sendAc
+            }
         }
 
 
