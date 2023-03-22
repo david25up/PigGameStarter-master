@@ -33,7 +33,7 @@ public class PigComputerPlayer extends GameComputerPlayer {
         // TODO  You will implement this method
         PigGameState pigGameState = new PigGameState( (PigGameState) info);
 
-        if (pigGameState.canMove(1)) {
+        if (pigGameState.getTurn() == playerNum) {
             return;
         } else {
             Random rand = new Random();
@@ -41,7 +41,11 @@ public class PigComputerPlayer extends GameComputerPlayer {
             int makeMove = rand.nextInt(2);
 
             if (makeMove == 0) {
-                sendAc
+                PigRollAction action = new PigRollAction(this);
+                game.sendAction(action);
+            } else {
+                PigHoldAction action = new PigHoldAction(this);
+                game.sendAction(action);
             }
         }
 
